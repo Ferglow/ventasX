@@ -2,17 +2,17 @@ import styled from "styled-components"
 /* Importarlo para realizarlo modo responsive, solo se ocupa para el device */
 import { Device } from "./styles/breakpoints"
 /* Se importa los estilos de GlobalStyle */
-import { GlobalStyle } from "./index"
+import { GlobalStyle, MyRoutes, Sidebar } from "./index"
 function App() {
   return (
     /* se divide en dos areas sidebar,  rutas, menu hamburguesa */
     <Container>
       <GlobalStyle />
-      <section className="contentSidebar">sidebar
+      <section className="contentSidebar"><Sidebar />
       </section>
       <secction className="contentMenuambur">menu ambur
       </secction>
-      <secction className="contentRouters">routers
+      <secction className="contentRouters"><MyRoutes />
       </secction>
     </Container>
   )
@@ -33,6 +33,8 @@ const Container = styled.main`
   }
   .contentRouters {
     background-color: rgba(231,13,136,0,5);
+    grid-column: 1;
+    width: 100%;
   }
   /* Funcion modo responsive modo tablet */
   @media ${Device.tablet} {
@@ -43,8 +45,13 @@ const Container = styled.main`
     .contentMenuambur {
       display: none;
     }
+    .contentRouters {
+      grid-column: 2;
+    }
   }
 `
 
 
 export default App
+
+/* 2 definiendo secciones */
