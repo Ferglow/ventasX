@@ -1,20 +1,25 @@
-import styled from "styled-components"
+/* Se agrega  el TeamProvider para utilizar los temas claro y oscuro */
+import styled, { ThemeProvider } from "styled-components"
 /* Importarlo para realizarlo modo responsive, solo se ocupa para el device */
 import { Device } from "./styles/breakpoints"
 /* Se importa los estilos de GlobalStyle */
-import { GlobalStyle, MyRoutes, Sidebar } from "./index"
+import { GlobalStyle, MyRoutes, Sidebar, useThemeStore } from "./index"
+
 function App() {
+  /* se divide en dos areas sidebar, rutas, menu hamburguesa*/ 
+  const { themeStyle } = useThemeStore();
   return (
-    /* se divide en dos areas sidebar,  rutas, menu hamburguesa */
-    <Container>
-      <GlobalStyle />
-      <section className="contentSidebar"><Sidebar />
-      </section>
-      <secction className="contentMenuambur">menu ambur
-      </secction>
-      <secction className="contentRouters"><MyRoutes />
-      </secction>
-    </Container>
+    <ThemeProvider theme={themeStyle}>
+      <Container>
+        <GlobalStyle />
+        <section className="contentSidebar"><Sidebar />
+        </section>
+        <secction className="contentMenuambur">menu ambur
+        </secction>
+        <secction className="contentRouters"><MyRoutes />
+        </secction>
+      </Container>
+    </ThemeProvider>
   )
 }
 /* Estilos del container mobile */

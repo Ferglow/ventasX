@@ -5,5 +5,5 @@ export function HomeTemplate() {
     </Container>)
 }
 const Container = styled.div`
-
+    height: 100vh;
 `
