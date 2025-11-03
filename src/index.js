@@ -4,6 +4,7 @@
  */
 
 export * from './App'
+export * from './components/organismos/ToogleTema'
 export * from './components/organismos/sidebar/Sidebar'
 export * from './components/templates/HomeTemplate'
 export * from './index'
@@ -14,3 +15,5 @@ export * from './store/ThemeStore'
 export * from './styles/GlobalStyle'
 export * from './styles/breakpoints'
 export * from './styles/theme'
+export * from './styles/variables'
+export * from './utils/dataEstatica'

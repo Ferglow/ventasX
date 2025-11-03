@@ -4,19 +4,26 @@ import styled, { ThemeProvider } from "styled-components"
 import { Device } from "./styles/breakpoints"
 /* Se importa los estilos de GlobalStyle */
 import { GlobalStyle, MyRoutes, Sidebar, useThemeStore } from "./index"
+import { useState } from "react";
 
 function App() {
-  /* se divide en dos areas sidebar, rutas, menu hamburguesa*/ 
+  /* se divide en dos areas sidebar, rutas, menu hamburguesa*/
   const { themeStyle } = useThemeStore();
+  /* sidebar abierto o cerrado */
+  const [sidebarOpen, setSidebarOpen] = useState(false)
   return (
     <ThemeProvider theme={themeStyle}>
-      <Container>
+      {/* Recorrer sidebar para ajustar a la pantalla dinámica*/}
+      <Container className={sidebarOpen ? "active" : ""}>
         <GlobalStyle />
-        <section className="contentSidebar"><Sidebar />
+        <section className="contentSidebar">
+          <Sidebar state={sidebarOpen} setState={() => setSidebarOpen(!sidebarOpen)} />
         </section>
-        <secction className="contentMenuambur">menu ambur
+        <secction className="contentMenuambur">
+          menu ambur
         </secction>
-        <secction className="contentRouters"><MyRoutes />
+        <secction className="contentRouters">
+          <MyRoutes />
         </secction>
       </Container>
     </ThemeProvider>
@@ -26,24 +33,29 @@ function App() {
 const Container = styled.main`
   display:grid; 
   grid-template-columns: 1fr;
-  background-color: black;
+  transition: 0.1s ease-in-out;
+    
   .contentSidebar {
     /* Desaparecer el sidebar en dispositivos mobile (display:none) */
     display: none;
-    background-color: rgba(78,45,78,0,5);
+    /* background-color: rgba(78,45,78,0,5); */
   }
   .contentMenuambur {
     position: absolute;
-    background-color: rgba(53,219,11,0,5);
+    /* background-color: rgba(53,219,11,0,5); */ 
   }
   .contentRouters {
-    background-color: rgba(231,13,136,0,5);
+    /* background-color: rgba(231,13,136,0,5); */
     grid-column: 1;
     width: 100%;
   }
   /* Funcion modo responsive modo tablet */
   @media ${Device.tablet} {
     grid-template-columns: 88px 1fr;
+    
+    &.active{
+      grid-template-columns: 260px 1fr;
+    }
     .contentSidebar {
       display: initial;
     }

@@ -2,7 +2,7 @@
 
 import { create } from 'zustand'
 import { Dark, Light } from '../styles/theme'
-export const useThemeStore = create((Set, get) => ({
+export const useThemeStore = create((set, get) => ({
     theme: "light",
     themeStyle: Light,
     setTheme: () => {
