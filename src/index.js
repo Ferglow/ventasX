@@ -4,12 +4,16 @@
  */
 
 export * from './App'
+export * from './components/atomos/Title'
 export * from './components/organismos/ToogleTema'
+export * from './components/organismos/formularios/InputText2'
 export * from './components/organismos/sidebar/Sidebar'
 export * from './components/templates/HomeTemplate'
+export * from './components/templates/LoginTemplate'
 export * from './index'
 export * from './main'
 export * from './pages/Home'
+export * from './pages/Login'
 export * from './routers/routes'
 export * from './store/ThemeStore'
 export * from './styles/GlobalStyle'

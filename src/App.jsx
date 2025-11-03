@@ -34,6 +34,8 @@ const Container = styled.main`
   display:grid; 
   grid-template-columns: 1fr;
   transition: 0.1s ease-in-out;
+  /* Igualar el color del texto */
+  color: ${({theme}) => theme.text};
     
   .contentSidebar {
     /* Desaparecer el sidebar en dispositivos mobile (display:none) */
