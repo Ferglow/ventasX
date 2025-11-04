@@ -1,31 +1,32 @@
 import styled from "styled-components";
-import {InputText2, Linea, Title} from '../../index'
+import { InputText2, Linea, Title } from '../../index'
 import { Btnsave } from "../../index";
 import { v } from "../../styles/variables";
+import { Device } from "../../styles/breakpoints";
 export function LoginTemplate() {
     return (<Container>
-       <section className="contentCard"> 
+
         <div className="card">
-            <Title> Ingresar </Title>
+            <Title $paddinbottom="40px"> Ingresar </Title>
             <form>
                 <InputText2>
-                <input className="form__field" placeholder="email" type="text"/>
+                    <input className="form__field" placeholder="email" type="text" />
                 </InputText2>
                 <InputText2>
-                <input className="form__field" placeholder="contraseña" type="password"/>
-
-                <Btnsave titulo="Ingresar" bgcolor= "#1CB0F6" color="255,255,255" width="100%"/>
+                    <input className="form__field" placeholder="contraseña" type="password" />
 
                 </InputText2>
+
+                <Btnsave titulo="Ingresar" bgcolor="#1CB0F6" color="255,255,255" width="100%" />
             </form>
 
             <Linea>
-                <span>fernando</span>
+                <span>0</span>
             </Linea>
 
-            <Btnsave titulo="Google" bgcolor="#fff" icono={<v.iconogoogle/>} />
+            <Btnsave titulo="Google" bgcolor="#fff" icono={<v.iconogoogle />} />
         </div>
-       </section>
+
     </Container>)
 }
 const Container = styled.div`
@@ -33,4 +34,18 @@ const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-`
+    text-align: center;
+
+     .card {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100%;
+        width: 100%;
+        margin: 20px;
+        @media ${Device.tablet} {
+            width: 400px;
+        }
+     }   
+
+`;
