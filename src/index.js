@@ -4,7 +4,10 @@
  */
 
 export * from './App'
+export * from './components/atomos/Icono'
+export * from './components/atomos/Linea'
 export * from './components/atomos/Title'
+export * from './components/moleculas/Btnsave'
 export * from './components/organismos/ToogleTema'
 export * from './components/organismos/formularios/InputText2'
 export * from './components/organismos/sidebar/Sidebar'
