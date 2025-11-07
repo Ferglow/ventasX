@@ -1,11 +1,13 @@
 import styled from "styled-components";
-import { InputText2, Linea, Title } from '../../index'
+import { InputText2, Linea, Title, useAuthStore } from '../../index'
 import { Btnsave } from "../../index";
 import { v } from "../../styles/variables";
 import { Device } from "../../styles/breakpoints";
-export function LoginTemplate() {
-    return (<Container>
 
+
+export function LoginTemplate() {
+    const {loginGoogle}=useAuthStore()
+    return (<Container>
         <div className="card">
             <Title $paddinbottom="40px"> Ingresar </Title>
             <form>
@@ -24,8 +26,9 @@ export function LoginTemplate() {
                 <span>0</span>
             </Linea>
 
-            <Btnsave titulo="Google" bgcolor="#fff" icono={<v.iconogoogle />} />
+            <Btnsave funcion={loginGoogle} titulo="Google" bgcolor="#fff" icono={<v.iconogoogle />} />
         </div>
+        
 
     </Container>)
 }
@@ -35,6 +38,7 @@ const Container = styled.div`
     justify-content: center;
     align-items: center;
     text-align: center;
+    flex-direction: column;
 
      .card {
         display: flex;
