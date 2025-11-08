@@ -3,7 +3,7 @@ import styled, { ThemeProvider } from "styled-components"
 /* Importarlo para realizarlo modo responsive, solo se ocupa para el device */
 import { Device } from "./styles/breakpoints"
 /* Se importa los estilos de GlobalStyle */
-import { GlobalStyle, MyRoutes, Sidebar, useThemeStore } from "./index"
+import { AuthContextProvider, GlobalStyle, MyRoutes, Sidebar, useThemeStore } from "./index"
 import { useState } from "react";
 
 function App() {
@@ -14,7 +14,8 @@ function App() {
   return (
     <ThemeProvider theme={themeStyle}>
       {/* Recorrer sidebar para ajustar a la pantalla dinámica*/}
-      <Container className={sidebarOpen ? "active" : ""}>
+      <AuthContextProvider>
+        <Container className={sidebarOpen ? "active" : ""}>
         <GlobalStyle />
         <section className="contentSidebar">
           <Sidebar state={sidebarOpen} setState={() => setSidebarOpen(!sidebarOpen)} />
@@ -26,6 +27,8 @@ function App() {
           <MyRoutes />
         </secction>
       </Container>
+      </AuthContextProvider>
+      
     </ThemeProvider>
   )
 }
