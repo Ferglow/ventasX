@@ -14,6 +14,5 @@ export const Linea = styled.div`
         padding: 0 5px;
         color: ${({ theme }) => theme.color2};
         font-weight: 700;
-
     }
 `

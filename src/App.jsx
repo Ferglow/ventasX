@@ -3,32 +3,39 @@ import styled, { ThemeProvider } from "styled-components"
 /* Importarlo para realizarlo modo responsive, solo se ocupa para el device */
 import { Device } from "./styles/breakpoints"
 /* Se importa los estilos de GlobalStyle */
-import { AuthContextProvider, GlobalStyle, MyRoutes, Sidebar, useThemeStore } from "./index"
+import { AuthContextProvider, GlobalStyle, MyRoutes, Sidebar, useThemeStore, Login } from "./index"
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 
 function App() {
   /* se divide en dos areas sidebar, rutas, menu hamburguesa*/
   const { themeStyle } = useThemeStore();
   /* sidebar abierto o cerrado */
   const [sidebarOpen, setSidebarOpen] = useState(false)
+  const { pathname } = useLocation();
   return (
     <ThemeProvider theme={themeStyle}>
       {/* Recorrer sidebar para ajustar a la pantalla dinámica*/}
       <AuthContextProvider>
-        <Container className={sidebarOpen ? "active" : ""}>
         <GlobalStyle />
-        <section className="contentSidebar">
-          <Sidebar state={sidebarOpen} setState={() => setSidebarOpen(!sidebarOpen)} />
-        </section>
-        <secction className="contentMenuambur">
-          menu ambur
-        </secction>
-        <secction className="contentRouters">
-          <MyRoutes />
-        </secction>
-      </Container>
+        {
+          pathname != "/login" ? (
+            <Container className={sidebarOpen ? "active" : ""}>
+              
+              <section className="contentSidebar">
+                <Sidebar state={sidebarOpen} setState={() => setSidebarOpen(!sidebarOpen)} />
+              </section>
+              <secction className="contentMenuambur">
+                menu ambur
+              </secction>
+              <secction className="contentRouters">
+                <MyRoutes />
+              </secction>
+            </Container>) : (<Login />)
+        }
+
       </AuthContextProvider>
-      
+
     </ThemeProvider>
   )
 }
@@ -38,7 +45,7 @@ const Container = styled.main`
   grid-template-columns: 1fr;
   transition: 0.1s ease-in-out;
   /* Igualar el color del texto */
-  color: ${({theme}) => theme.text};
+  color: ${({ theme }) => theme.text};
     
   .contentSidebar {
     /* Desaparecer el sidebar en dispositivos mobile (display:none) */

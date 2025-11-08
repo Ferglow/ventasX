@@ -1,36 +1,38 @@
 import styled from "styled-components";
-import { InputText2, Linea, Title, useAuthStore } from '../../index'
+import { InputText2, Linea, Title, Footer, useAuthStore } from '../../index'
 import { Btnsave } from "../../index";
 import { v } from "../../styles/variables";
 import { Device } from "../../styles/breakpoints";
 
-
 export function LoginTemplate() {
-    const {loginGoogle}=useAuthStore()
-    return (<Container>
-        <div className="card">
-            <Title $paddinbottom="40px"> Ingresar </Title>
-            <form>
-                <InputText2>
-                    <input className="form__field" placeholder="email" type="text" />
-                </InputText2>
-                <InputText2>
-                    <input className="form__field" placeholder="contraseña" type="password" />
+    const { loginGoogle } = useAuthStore()
+    return (
+        <Container>
+            <div className="card">
+                <ContentLogo>
+                    <img src={v.logo} />
+                    <span>VentasX</span>
+                </ContentLogo>
+                <Title $paddinbottom="40px"> Ingresar </Title>
+                <form>
+                    <InputText2>
+                        <input className="form__field" placeholder="email" type="text" />
+                    </InputText2>
+                    <InputText2>
+                        <input className="form__field" placeholder="contraseña" type="password" />
+                    </InputText2>
 
-                </InputText2>
+                    <Btnsave titulo="Ingresar" bgcolor="#1CB0F6" color="255,255,255" width="100%" />
+                </form>
 
-                <Btnsave titulo="Ingresar" bgcolor="#1CB0F6" color="255,255,255" width="100%" />
-            </form>
+                <Linea>
+                    <span>0</span>
+                </Linea>
 
-            <Linea>
-                <span>0</span>
-            </Linea>
-
-            <Btnsave funcion={loginGoogle} titulo="Google" bgcolor="#fff" icono={<v.iconogoogle />} />
-        </div>
-        
-
-    </Container>)
+                <Btnsave funcion={loginGoogle} titulo="Google" bgcolor="#fff" icono={<v.iconogoogle />} />
+            </div>
+            <Footer />
+        </Container>)
 }
 const Container = styled.div`
     height: 100vh;
@@ -39,6 +41,8 @@ const Container = styled.div`
     align-items: center;
     text-align: center;
     flex-direction: column;
+    padding: 0 10px;
+    color: ${({ theme }) => theme.text};
 
      .card {
         display: flex;
@@ -50,6 +54,23 @@ const Container = styled.div`
         @media ${Device.tablet} {
             width: 400px;
         }
+        form{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
      }   
 
+`;
+const ContentLogo = styled.section`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+    span{
+        font-weight: 700;
+    }
+    img{
+        width: 10%;
+    }
 `;
